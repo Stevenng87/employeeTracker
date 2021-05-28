@@ -18,7 +18,7 @@ const start = () => {
   inquirer
     .prompt({
         name: 'action',
-        type: 'startlist',
+        type: 'list',
         message: 'What would you like to do?',
         choices: [
             'Add department',
@@ -30,7 +30,6 @@ const start = () => {
             'Update employee role',
         ],
     })
-
 .then((answer) => {
   switch (answer.action) {
     case 'Add department':
@@ -165,7 +164,7 @@ const viewDepartment = () => {
   connection.query('SELECT * FROM department', (err, res) => {
     if (err) throw err;
     console.log(res);
-    connection.end();
+    start();
   });
 };
 
@@ -173,7 +172,7 @@ const viewRole = () => {
   connection.query('SELECT * FROM role', (err, res) => {
     if (err) throw err;
     console.log(res);
-    connection.end();
+    start();
   });
 };
 
@@ -181,21 +180,21 @@ const viewEmployee = () => {
   connection.query('SELECT * FROM employee', (err, res) => {
     if (err) throw err;
     console.log(res);
-    connection.end();
+    start();
   });
 };
 
-const updateEmployee = () => {
-  inquirer
-    .prompt({
-      name: 'update',
-      type: 'input',
-      message: 'What role do you want to change?'
-    })
-    .then((answer) => {
-      connection.query(
-        'UPDATE employee SET ? WHERE ?',
-        
-      )
-    })
-}
+// const updateEmployee = () => {
+//   inquirer
+//     .prompt({
+//       name: 'update',
+//       type: 'input',
+//       message: 'Which employee role do you want to change?'
+//     })
+//     .then((answer) => {
+//       connection.query(
+//         'UPDATE employee SET ? WHERE ?',
+
+//       )
+//     })
+// }

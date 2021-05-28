@@ -26,6 +26,3 @@ CREATE TABLE department(
     PRIMARY KEY (id)
 )
 
-SELECT * FROM employee;
-select * from department;
-select * from role;
